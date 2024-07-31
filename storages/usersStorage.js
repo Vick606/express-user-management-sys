@@ -1,4 +1,3 @@
-// storages/usersStorage.js
 class UsersStorage {
   constructor() {
     this.storage = {};
