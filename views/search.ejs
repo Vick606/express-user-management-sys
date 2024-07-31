@@ -1,0 +1,25 @@
+<h1><%= title %></h1>
+
+<form action="/users/search" method="POST">
+  <input type="text" name="query" placeholder="Search by name or email" value="<%= locals.query %>">
+  <button type="submit">Search</button>
+</form>
+
+<% if (locals.users && users.length > 0) { %>
+  <h2>Search Results</h2>
+  <ul>
+    <% users.forEach(user => { %>
+      <li>
+        <%= user.firstName %> <%= user.lastName %> (<%= user.email %>)
+        <% if (user.age) { %>
+          - Age: <%= user.age %>
+        <% } %>
+        <% if (user.bio) { %>
+          - Bio: <%= user.bio %>
+        <% } %>
+      </li>
+    <% }); %>
+  </ul>
+<% } else if (locals.query) { %>
+  <p>No users found matching your search.</p>
+<% } %>
